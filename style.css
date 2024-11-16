@@ -1,0 +1,64 @@
+*{
+    margin=0;
+    padding=0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("https://wallpaperaccess.com/full/3468697.jpg");
+    background-size: cover; /* Add this to scale the image to cover the entire background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.over-container{
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color:bisque;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.balls-container{
+    margin-bottom: 20px;
+}
+.ball{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    display: inline-flex;
+    border: 4px solid #000;
+    margin: 5px;
+    align-items: center;
+    background-color:lightgreen ;
+}
+.buttons-container{
+    margin-bottom 20px;
+}
+.buttons-container button{
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 40px;
+    cursor: pointer;
+    background-color: blue;
+    color: #fff;
+    transition: background-color 0.3s;
+}  
+.buttons-container button:hover{
+    background-color:green;
+}
+.score-display, .cumulative-score{
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+#current-score{
+    margin-top: 10px;
+    font-size: 20px;
+}
+button:disabled{
+    background-color: brown;
+    cursor:not-allowed;
+}
+button:disabled:hover{
+    background-color: brown;
+}
