@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scoreboard Manager</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cricket Match Scoring</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="over-container">
-        <div id="balls-container" class="balls-container"></div>
-        
-        <div class="buttons-container">
-            <button id="button-1">1</button>
-            <button id="button-2">2</button>
-            <button id="button-3">3</button>
-            <button id="button-4">4</button>
-            <button id="button-5">5</button>
-            <button id="button-6">6</button>
-            <button id="button-dot">DOT BALL</button>
-            <button id="button-wicket">WICKET!!</button>
-            <button id="button-wide">WIDE BALL</button>
-            <button id="button-no">No BALL</button>
-            <input type="number" id="total-overs-input" placeholder="Total Overs" />
-            <button id="set-total-overs">Set Total Overs</button>
-        </div>
-        
-        <div id="score-display" class="score-display"></div>
-        <div id="cumulative-score" class="cumulative-score"></div>
-        <div id="current-score"></div>
+    <div class="section" id="section1">
+        <h2>Match Setup</h2>
+        <label>Team A Name: <input type="text" id="teamA" /></label><br />
+        <label>Team B Name: <input type="text" id="teamB" /></label><br />
+        <label>No. of Players: <input type="number" id="playersCount" /></label><br />
+        <label>Max Overs per Bowler: <input type="number" id="maxOversPerBowler" /></label><br />
+        <label>Total Overs: <input type="number" id="totalOvers" /></label><br />
+        <button onclick="goToSection2()">Next</button>
     </div>
+
+    <div class="section hidden" id="section2">
+        <h2>Toss</h2>
+        <div>
+            <p>Who won the toss?</p>
+            <label><input type="radio" name="tossWinner" value="A" /> <span id="teamAName1"></span></label>
+            <label><input type="radio" name="tossWinner" value="B" /> <span id="teamBName1"></span></label>
+        </div>
+        <div>
+            <p>What did the toss winner choose?</p>
+            <label><input type="radio" name="tossChoice" value="bat" /> Bat</label>
+            <label><input type="radio" name="tossChoice" value="bowl" /> Bowl</label>
+        </div>
+        <button onclick="goToSection3()">Start Match</button>
+    </div>
+
+    <div class="section hidden" id="section3">
+        <h2>Match Begins</h2>
+        <label>Bowler Name: <input type="text" id="bowlerName" /></label><br />
+        <label>Batsman 1 Name: <input type="text" id="batsman1" /></label><br />
+        <label>Batsman 2 Name: <input type="text" id="batsman2" /></label><br />
+        <div class="buttons-container">
+            <button onclick="recordBall(0)">0</button>
+            <button onclick="recordBall(1)">1</button>
+            <button onclick="recordBall(2)">2</button>
+            <button onclick="recordBall(3)">3</button>
+            <button onclick="recordBall(4)">4</button>
+            <button onclick="recordBall(5)">5</button>
+            <button onclick="recordBall(6)">6</button>
+            <button onclick="recordBall('WD')">Wide</button>
+            <button onclick="recordBall('NB')">No Ball</button>
+            <button onclick="recordBall('W')">Wicket</button>
+        </div>
+        <div id="scoreOutput"></div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
