@@ -35,35 +35,43 @@
     <button onclick="goToSection3()">Start Match</button>
   </div>
 
-  <!-- Section 3: Player Inputs -->
-  <div class="section hidden" id="section3">
+<!-- Section 3: Match -->
+<div class="section hidden" id="section3">
     <h2>Match Begins</h2>
     <div id="playerInputs">
-      <label>Bowler Name: <input type="text" id="bowler" /></label><br />
-      <label>Batsman 1 Name: <input type="text" id="batsman1" /></label><br />
-      <label>Batsman 2 Name: <input type="text" id="batsman2" /></label><br />
-      <button onclick="startMatch()">Start</button>
+        <label>Bowler Name: <input type="text" id="bowler" /></label><br />
+        <label>Batsman 1 Name: <input type="text" id="batsman1" /></label><br />
+        <label>Batsman 2 Name: <input type="text" id="batsman2" /></label><br />
+        <button onclick="startMatch()">Start</button>
     </div>
 
-    <!-- Score Buttons -->
-    <div class="buttons-container hidden" id="scoringButtons">
-      <div id="balls-container" class="balls-container"></div>
-      <button onclick="addBall(0)">0</button>
-      <button onclick="addBall(1)">1</button>
-      <button onclick="addBall(2)">2</button>
-      <button onclick="addBall(3)">3</button>
-      <button onclick="addBall(4)">4</button>
-      <button onclick="addBall(5)">5</button>
-      <button onclick="addBall(6)">6</button>
-      <button onclick="addExtraBall('wide')">Wide</button>
-      <button onclick="addExtraBall('no')">No Ball</button>
-      <button onclick="addBall('wicket')">Wicket</button>
+    <div id="scoringButtons" class="hidden">
+        <div class="buttons-container">
+            <button id="button-dot">0</button>
+            <button id="button-1">1</button>
+            <button id="button-2">2</button>
+            <button id="button-3">3</button>
+            <button id="button-4">4</button>
+            <button id="button-5">5</button>
+            <button id="button-6">6</button>
+            <button id="button-wide">Wide</button>
+            <button id="button-no">No Ball</button>
+            <button id="button-wicket">Wicket</button>
+        </div>
+        <div id="balls-container" class="balls-container"></div>
+        <div id="current-score"></div>
+        <div id="score-display"></div>
+        <div id="cumulative-score"></div>
     </div>
+</div>
 
-    <div id="score-display" class="score-display"></div>
-    <div id="cumulative-score" class="cumulative-score"></div>
-    <div id="current-score"></div>
-  </div>
+<!-- Section 4: Scorecard -->
+<div class="section hidden" id="section4">
+    <h2>Full Match Scorecard</h2>
+    <div id="scorecard-content"></div>
+</div>
+
+
 
   <script src="script.js"></script>
 </body>

@@ -160,9 +160,37 @@ function endOver() {
         alert("Over Ended!");
         disableButtons();
         showNewOverButton();
+        showScorecardButton();
     }
 
     displayCurrentScore();
+}
+
+function showScorecardButton() {
+    const scoreBtn = document.createElement("button");
+    scoreBtn.innerText = "Show Scorecard";
+    scoreBtn.onclick = () => {
+        document.getElementById("section3").classList.add("hidden");
+        document.getElementById("section4").classList.remove("hidden");
+        renderScorecard();
+    };
+    document.querySelector(".buttons-container").appendChild(scoreBtn);
+}
+
+function renderScorecard() {
+    const scorecardDiv = document.getElementById("scorecard-content");
+    scorecardDiv.innerHTML = "";
+    teamScores.forEach((overs, index) => {
+        const teamDiv = document.createElement("div");
+        const teamName = index === 0 ? window.matchData.teamA : window.matchData.teamB;
+        teamDiv.innerHTML = `<h3>${teamName}</h3>`;
+        overs.forEach((runs, i) => {
+            const overText = document.createElement("p");
+            overText.innerText = `Over ${i + 1}: ${runs} runs`;
+            teamDiv.appendChild(overText);
+        });
+        scorecardDiv.appendChild(teamDiv);
+    });
 }
 
 function endInnings() {
