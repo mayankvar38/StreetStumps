@@ -1,3 +1,5 @@
+// script.js
+
 let ballCount = 0;
 let currentOverScore = 0;
 let currentScore = 0;
@@ -74,13 +76,9 @@ function startMatch() {
     document.getElementById("scoringButtons").classList.remove("hidden");
 }
 
-function recordBall(value) {
-    const output = document.getElementById("scoreOutput");
-    output.innerHTML += `<span>${value}</span> `;
-}
-
 function addBall(type) {
-    if (wickets < 10 && ballCount < 6) {
+    const maxWickets = window.matchData.playersCount - 1;
+    if (wickets < maxWickets && ballCount < 6) {
         const ball = document.createElement("div");
         ball.classList.add("ball");
         ball.innerText = type === "dot" ? "." : type;
@@ -94,7 +92,7 @@ function addBall(type) {
                 currentScore += runs;
             } else {
                 wickets++;
-                if (wickets === 10) {
+                if (wickets === maxWickets) {
                     endOver();
                     return;
                 }
@@ -111,7 +109,8 @@ function addBall(type) {
 }
 
 function addExtraBall(type) {
-    if (wickets < 10) {
+    const maxWickets = window.matchData.playersCount - 1;
+    if (wickets < maxWickets) {
         const ball = document.createElement("div");
         ball.classList.add("ball");
         if (type === "wide" || type === "no") {
@@ -134,7 +133,7 @@ function updateTeamScore() {
     const team2Score = teamScores[1].reduce((total, score) => total + score, 0);
 
     if (currentTeam === 2 && team2Score > team1Score) {
-        declareWinner(2, 10 - wickets, "wickets");
+        declareWinner(2, window.matchData.playersCount - 1 - wickets, "wickets");
     }
 }
 
@@ -153,9 +152,10 @@ function endOver() {
 
     document.getElementById("score-display").innerText = `Team ${currentTeam} Total Score: ${totalScore} runs, Wickets: ${wickets}`;
 
-    if (currentOver > window.matchData.totalOvers || wickets === 10) {
+    if (currentOver > window.matchData.totalOvers || wickets === (window.matchData.playersCount - 1)) {
         endInnings();
     } else {
+        alert("Over Ended!");
         disableButtons();
         showNewOverButton();
     }
@@ -216,7 +216,8 @@ function disableButtons() {
 
 function showNewOverButton() {
     const newOverButton = document.createElement("button");
-    newOverButton.innerText = "New Over";
+    newOverButton.innerText = "Start New Over";
+    newOverButton.id = "newOverButton";
     newOverButton.onclick = resetOver;
     document.querySelector(".buttons-container").appendChild(newOverButton);
 }
@@ -227,9 +228,8 @@ function resetOver() {
     buttons.forEach((button) => {
         button.disabled = false;
     });
-    document.querySelector(".buttons-container").removeChild(
-        document.querySelector(".buttons-container button:last-child")
-    );
+    const newOverBtn = document.getElementById("newOverButton");
+    if (newOverBtn) newOverBtn.remove();
     document.getElementById("score-display").innerText = "";
 }
 
