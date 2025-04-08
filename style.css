@@ -36,14 +36,70 @@ button:hover {
     background-color: #0056b3;
 }
 
-.buttons-container button {
-    font-size: 20px;
-    margin: 5px;
-    background-color: #28a745;
+.buttons-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-#scoreOutput {
+.buttons-container button {
+    font-size: 18px;
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.buttons-container button:hover {
+    background-color: #218838;
+}
+
+#scoreOutput,
+#score-display,
+#current-score {
     margin-top: 20px;
     font-weight: bold;
     font-size: 18px;
+    text-align: center;
+}
+
+#cumulative-score {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.balls-container {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.ball {
+    width: 40px;
+    height: 40px;
+    background-color: #ffc107;
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}
+
+#newOverButton {
+    margin-top: 20px;
+    background-color: #17a2b8;
+}
+
+#newOverButton:hover {
+    background-color: #138496;
 }

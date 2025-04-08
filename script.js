@@ -56,6 +56,8 @@ function goToSection3() {
 
     document.getElementById("section2").classList.add("hidden");
     document.getElementById("section3").classList.remove("hidden");
+    document.getElementById("playerInputs").classList.remove("hidden");
+    document.getElementById("scoringButtons").classList.add("hidden");
 }
 
 function startMatch() {
