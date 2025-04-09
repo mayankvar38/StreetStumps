@@ -201,6 +201,11 @@ function endInnings() {
         declareWinner();
     }
 }
+function goBackToScoring() {
+    document.getElementById("section4").classList.add("hidden");
+    document.getElementById("section3").classList.remove("hidden");
+}
+
 
 function resetForNextTeam() {
     overScores = [];
