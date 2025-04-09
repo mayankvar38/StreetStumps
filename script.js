@@ -167,14 +167,17 @@ function endOver() {
 }
 
 function showScorecardButton() {
-    const scoreBtn = document.createElement("button");
-    scoreBtn.innerText = "Show Scorecard";
-    scoreBtn.onclick = () => {
-        document.getElementById("section3").classList.add("hidden");
-        document.getElementById("section4").classList.remove("hidden");
-        renderScorecard();
-    };
-    document.querySelector(".buttons-container").appendChild(scoreBtn);
+    if (!document.getElementById("showScorecardBtn")) {
+        const scoreBtn = document.createElement("button");
+        scoreBtn.innerText = "Show Scorecard";
+        scoreBtn.id = "showScorecardBtn";  // Unique ID to prevent duplicates
+        scoreBtn.onclick = () => {
+            document.getElementById("section3").classList.add("hidden");
+            document.getElementById("section4").classList.remove("hidden");
+            renderScorecard();
+        };
+        document.querySelector(".buttons-container").appendChild(scoreBtn);
+    }
 }
 
 function renderScorecard() {
